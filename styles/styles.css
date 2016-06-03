@@ -1,0 +1,26 @@
+body {
+    background-color: #111111;
+    padding: 5%;
+    margin: 5%;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+p {
+    font-family: "Arial";
+    font-size: 20px;
+    color: white;
+}
+
+#game {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+}
+
