@@ -19,11 +19,10 @@ function Transformable() {
 Movable.prototype = new Transformable();
 Movable.prototype.constructor=Movable;
 /**
- * Movable base class
+ * Movable base clas
  * @constructor
  */
-function Movable() {
-    this.force = 0.0;
+function Movable() {this.force = 0.0;
     this.mass = 1.0;
     this.getAcceleration = function() { return this.force / this.mass; }
     this.updateMove = function(delta) {
@@ -33,4 +32,16 @@ function Movable() {
             this.position.y += this.heading.y * acc * delta
         )
     }
+}
+
+Movable.prototype.force = 0.0;
+Movable.prototype.mass = 1.0;
+Movable.prototype.getAcceleration = function() { return this.force / this.mass; }
+Movable.prototype.updateMove = function(delta) {
+    var acc = this.getAcceleration();
+    Movable.prototype.setPosition(
+        this.position.x += this.heading.x * acc * delta,
+        this.position.y += this.heading.y * acc * delta
+    )
+
 }

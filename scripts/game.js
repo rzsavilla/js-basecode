@@ -7,9 +7,11 @@ var delta = 0;
 var timestep = 1000 / 60;
 var lastFrameTimeMs = 0;
 var maxFPS = 30;
-var fps = 60;
+var fps = 0;
 var framesThisSecond = 0;
 var lasFPSUpdate = 0;
+
+var ball = new Circle();
 
 /**
  * Update game logic
@@ -32,9 +34,7 @@ function render(interpolate) {
     ctx.fillStyle = "black";
     ctx.fillRect(0,0,canvas.width, canvas.height);
     ctx.closePath();
-
-    ///////////Draw////////////////////
-
+    ///////////Draw////////////
 }
 
 /**
@@ -61,7 +61,7 @@ function mainLoop(timestamp) {
         delta -= timestep;
         if (++numUpdateSteps >= 240) { delta = 0; break; }
     }
-    render((delta / timestep));
+    render(delta / timestep);
     window.requestAnimationFrame(mainLoop);
 }
 

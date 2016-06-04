@@ -19,6 +19,6 @@ function Vector2D(x,y) {
     this.magnitude = function() { return (Math.sqrt(Math.pow(this.x,2) + Math.pow(this.y,2))) }
     this.normalize = function() {
         var mag = this.magnitude;
-        return new Point(this.x / mag, this.y / mag);
+        return new Vector2D(this.x / mag, this.y / mag);
     }
 }

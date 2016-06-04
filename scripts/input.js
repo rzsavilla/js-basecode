@@ -79,7 +79,7 @@ var mousePos = new Vector2D(0.0,0.0);
  * Disable brownser right click context menu
  * @returns {boolean}
  */
-document.oncontextmenu = function() { return false; }
+//document.oncontextmenu = function() { return false; }
 
 /** Mouse button DOWN event */
 document.addEventListener("mousedown",

@@ -16,9 +16,8 @@ Rectangle.prototype.constructor=Rectangle;  //Set constructor to Box
  * @constructor
  */
 function Rectangle() {
-    this.width = 100.0;
-    this.height = 100.0;
-
+    this.width = 100;
+    this.height = 100;
     /**
      * Draw Rectangle Shape
      * @param c
@@ -26,11 +25,11 @@ function Rectangle() {
      */
     this.draw = function(c,interpolate) {
         c.fillStyle = this.colour;
-        //interpolate movement
+        //interpolate
         c.fillRect(
-            ((this.prevPos.x + (this.position.x - this.prevPos.x) * interpolate) - this.origin.x),
-            ((this.prevPos.y + (this.position.y - this.prevPos.y) * interpolate) - this.origin.y),
-            this.width * this.scale,this.height * this.scale
+            (this.prevPos.x + (this.position.x - this.prevPos.x) * interpolate) - this.origin.x,
+            (this.prevPos.y + (this.position.y - this.prevPos.y) * interpolate) - this.origin.y,
+            this.width * this.scale.x,this.height * this.scale.y
         )
     }
 }
@@ -55,7 +54,7 @@ function Circle() {
         c.arc(
             ((this.prevPos.x + (this.position.x - this.prevPos.x) * interpolate) - this.origin.x),
             ((this.prevPos.y + (this.position.y - this.prevPos.y) * interpolate) - this.origin.y),
-            this.radius * this.scale,0,Math.PI*2
+            this.radius * this.scale.x,0,Math.PI*2
         );
         c.fill();
     }
