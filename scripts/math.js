@@ -9,10 +9,10 @@ function Vector2D(x,y) {
     this.y = y;
 
     this.set = function(newX, newY) { this.x = newX, this.y = newY; }
-    this.add = function(x,y) { return new Point(this.x + x, this.y + y); }
-    this.subtract = function(x,y) { return new Point(this.x - x, this.y - y); }
-    this.multiply = function(x,y) { return new Point(this.x * x, this.y * y); }
-    this.divide = function(x,y) { if (x == 0 || y == 0) { return new Point(0,0); } return new Point(this.x / x, this.y / y); }
+    this.add = function(x,y) { return new Vector2D(this.x + x, this.y + y); }
+    this.subtract = function(x,y) { return new Vector2D(this.x - x, this.y - y); }
+    this.multiply = function(x,y) { return new Vector2D(this.x * x, this.y * y); }
+    this.divide = function(x,y) { if (x == 0 || y == 0) { return new Vector2D(0,0); } return new Vector2D(this.x / x, this.y / y); }
 
     this.getX = function() { return this.x; }
     this.getY = function() { return this.y; }
