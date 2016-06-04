@@ -129,6 +129,6 @@ function getMousePos(canvas) {
     var relative = canvas.getBoundingClientRect();
     return new Vector2D(
         mousePos.x - relative.left,
-        mousePos.y - relative.right
+        mousePos.y - relative.top
     )
 }
