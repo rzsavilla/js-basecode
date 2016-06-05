@@ -2,45 +2,59 @@ Sprite.prototype= new Movable(); //Sprite Inherits Movable
 Sprite.prototype.constructor=Sprite;
 /** Sprite */
 function Sprite() {
-    this.image = new Image();
-    this.scaledSize = new Vector2D(0,0);
-    this.size = new Vector2D(0,0);
+    Movable.call(this); //Super
+    /**
+     * Sprite Image/SpriteSheet
+     */
+    var image = new Image();
+    /**
+     * Size of sprite
+     * @type {Vector2D}
+     */
+    var size = new Vector2D(0,0);
 
     /**
      * Set the size of the sprite
      * @param newWidth Sprite width.
      * @param newHeight Sprite height.
      */
-    this.setSize = function(newWidth,newHeight) { this.size.x = newWidth; this.size.y = newHeight; }
+    this.setSize = function(newWidth,newHeight) { size.x = newWidth; size.y = newHeight; }
     this.setImage = function(newImage) {
-        this.image = newImage;
+        image = newImage;
         this.setSize(newImage.width,newImage.height);
     }
+
+    this.getSize = function() { return size; }
+    this.getImage = function() { return image; }
 
     /**
      * Draw sprite image
      * @param c Canvas to draw on.
-     * @param interpolate Interpolate position of the drawn image
+     * @param interpolate {number} Interpolate position of the drawn image
      */
     this.draw = function (c,interpolate) {
-        c.drawImage(this.image,
-            (this.prevPos.x + (this.position.x - this.prevPos.x) * interpolate) - this.origin.x,
-            (this.prevPos.y + (this.position.y - this.prevPos.y) * interpolate) - this.origin.y
+        c.drawImage(image,
+            (this.getPrevPos().x + (this.getPos().x - this.getPrevPos().x) * interpolate) - this.getOrigin().x,
+            (this.getPrevPos().y + (this.getPos().y - this.getPrevPos().y) * interpolate) - this.getOrigin().y
         )
     }
 }
 
 /**
  * Stores animation information for a sprite.
- * @param {int} numFrames Number of frames in the animation.
- * @param {float} startX X position on sprite sheet for the first frame.
- * @param {float} startY Y position on sprite sheet for the first frame.
- * @param {int} frameWidth Width of animation frame.
- * @param {int} frameHeight Height of animation frame.
- * @param {int} fps Animation frames per second.
+ * @param {number} numFrames Number of frames in the animation.
+ * @param {number} startX X position on sprite sheet for the first frame.
+ * @param {number} startY Y position on sprite sheet for the first frame.
+ * @param {number} frameWidth Width of animation frame.
+ * @param {number} frameHeight Height of animation frame.
+ * @param {number} fps Animation frames per second.
  * @param {image} spriteSheet Sprite sheet
  */
 function Animation(numFrames,startX,startY,frameWidth,frameHeight,fps,spriteSheet) {
+    /**
+     *
+     * @type {number}
+     */
     this.frameCount = numFrames;
     this.x = startX;
     this.y = startY;
@@ -54,6 +68,7 @@ AnimatedSprite.prototype = new Sprite();                //Animated Sprite Inheri
 AnimatedSprite.prototype.constructor=AnimatedSprite;
 /** Animated sprite */
 function AnimatedSprite() {
+    //Sprite.call(this);
     /** Frame Position */
     var framePos = new Vector2D(0.0,0.0);
     /** Size of each frame */
@@ -120,8 +135,8 @@ AnimatedSprite.prototype.draw = function(c,interpolate) {
         this.getAnimation().spriteSheet,
         this.getAnimation().x + (this.getCurrFrame() * this.getAnimation().width),this.getAnimation().y,
         this.getAnimation().width,this.getAnimation().height,
-        (this.prevPos.x + (this.position.x - this.prevPos.x) * interpolate) - this.origin.x,
-        (this.prevPos.y + (this.position.y - this.prevPos.y) * interpolate) - this.origin.y,
-        this.getAnimation().width * this.scale.x,this.getAnimation().height * this.scale.y
+        (this.getPrevPos().x + (this.getPos().x - this.getPrevPos().x) * interpolate) - this.getOrigin().x,
+        (this.getPrevPos().y + (this.getPos().y - this.getPrevPos().y) * interpolate) - this.getOrigin().y,
+        this.getAnimation().width * this.getScale().x,this.getAnimation().height * this.getScale().y
     )
 }
