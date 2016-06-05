@@ -11,17 +11,6 @@ var fps = 0;
 var framesThisSecond = 0;
 var lasFPSUpdate = 0;
 
-var ball = new Rectangle();
-ball.setPosition(100,100);
-ball.setHeading(1.0,0.0);
-ball.setForce(100.0);
-
-var ball2 = new Rectangle();
-ball2.setHeading(0.0,1.0);
-ball2.setColour("blue");
-ball2.setPosition(100.0,300.0);
-ball2.setHeading(1.0,0.0);
-ball2.setForce(100.0);
 
 /**
  * Update game logic
