@@ -44,12 +44,12 @@ function Transformable() {
      * Set X position
      * @param newX {number} New position.x
      */
-    this.setPosX = function(newX) { position.x = newX; }
+    this.setPosX = function(newX) { prevPos.x = position.x; position.x = newX; }
     /**
      * Set Y position
      * @param newY {number} New position.y
      */
-    this.setPosY = function(newY) { position.y = newY; }
+    this.setPosY = function(newY) { prevPos.y = position.y; position.y = newY; }
     /**
      * Set heading
      * @param x [number] New heading.x

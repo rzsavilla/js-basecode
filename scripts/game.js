@@ -11,14 +11,12 @@ var fps = 0;
 var framesThisSecond = 0;
 var lasFPSUpdate = 0;
 
-
 /**
  * Update game logic
  * @param delta timestep
  */
 function update(delta) {
     //Delta=TimeStep in seconds
-
 }
 
 /**
@@ -34,7 +32,6 @@ function render(interpolate) {
     ctx.fillRect(0,0,canvas.width, canvas.height);
     ctx.closePath();
     ///////////Draw////////////
-
 }
 
 /**
